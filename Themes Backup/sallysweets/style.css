@@ -1,0 +1,448 @@
+/*
+Theme Name:   SallySweets
+Description:  WP Theme for Sally Sweets, created for Developing With Web Frameworks assignment 2 at Staffordshire University 2024.
+Author:       Darren Halpin (Student ID: 20122839)
+Version:      1.0.0
+Tag:          light
+*/
+
+/* MAIN ROOT STYLES */
+/* Colour Pallet */
+:root {
+    --c-white: rgba(255, 255, 255, 1);
+    --c-black: rgba(0, 0, 0, 1);
+    --c-primary: rgba(211, 28, 92, 1);
+    --c-primary-soft: rgba(249, 227, 236, 1);
+    --c-secondary: rgba(155, 191, 229, 1);
+    --c-button-bg: #ddd;
+    --c-button-border: #333;
+}
+
+/* Typography */
+:root {
+    --fMain: 'f_Main', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    --fHeadingMain: 'f_HeadingMain', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    --fHeadingSub: 'f_HeadingSub', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+@font-face {
+    font-family: 'f_Main';
+    font-style: normal;
+    font-weight: 400;
+    src: url('assets/fonts/Montserrat-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'f_HeadingMain';
+    font-style: italic;
+    font-weight: 200;
+    src: url('assets/fonts/Sweet-Chili.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'f_HeadingSub';
+    font-style: normal;
+    font-weight: 400;
+    src: url('assets/fonts/LobsterTwo-BoldItalic.woff') format('woff');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body, div, ul, li, main, section, aside, #container {
+    margin: 0;
+    padding: 0;    
+}
+
+p, h1, h2, h3, h4, h5, h6, a {
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER STYLES */
+
+#main-header {
+    position: sticky;
+    z-index: 1000;
+    top: 0px;
+}
+
+#header-address {
+    color: var(--c-white);
+    letter-spacing: 0.1rem;
+    background-color: var(--c-primary);
+    text-align: center;
+    padding: 12px 0px;
+    font-family: var(--fMain);
+    font-size: 12px;  
+    font-weight: bold;  
+}
+
+#header-logo {
+    background-color: var(--c-white);
+    text-align: center;
+    padding: 15px 0px; 
+}
+
+#header-logo img {
+    width: 100px;
+    height: auto;
+}
+
+/* NAVIGATION MENU STYLES */
+
+#site-navigation {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);
+}
+
+#menu-sally-sweets-menu {
+    font-family: var(--fMain);
+    font-size: 0.9em;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: var(--c-secondary);
+    border-top: var(--c-primary) dashed 2px;
+    border-bottom: var(--c-primary) dashed 2px;
+    display: flex; /* Use Flexbox for the main menu */
+    justify-content: space-around; /* Align items to the start of the container */
+}
+
+#menu-sally-sweets-menu li {
+    position: relative;
+    flex: 1; /* Distributes space equally among menu items */
+    text-align: center; /* Centers the text within each menu item */
+}
+
+/* Style links within the menu items */
+#menu-sally-sweets-menu li a {
+    display: block;
+    color: var(--c-black);
+    font-weight: bold;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color on hover */
+#menu-sally-sweets-menu li a:hover,
+#menu-sally-sweets-menu li a:focus { /* Accessibility: focus state */
+    background-color: var(--c-primary);
+    color: var(--c-white);
+    font-weight: bold;
+}
+
+/* Styles for submenu */
+.menu-item-has-children .sub-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0; /* Ensures the submenu is as wide as the parent item */
+    text-align: left; /* Align submenu text to the left */
+    top: 100%; /* Align the submenu right below the menu item */
+    flex-direction: column; /* Stack submenu items vertically */
+    background-color: var(--c-secondary);
+    width: 100%; /* Submenu width matches the parent item */
+    list-style: none; /* Remove list styles */
+    padding: 0; /* Reset padding */
+    margin: 0; /* Reset margin */
+}
+
+/* Display submenu on parent item hover */
+.menu-item-has-children:hover .sub-menu {
+    border-top: var(--c-primary) dashed 2px;
+    display: flex; /* Display submenu */
+    z-index: 999; /* Force the sub-menu to display above the hero image */
+}
+
+/* Style for submenu items to override flex properties */
+.sub-menu li {
+    width: 100%; /* Ensure full width for submenu items */
+    border-bottom: var(--c-primary) dashed 2px;
+    border-left: var(--c-primary) dashed 2px;
+    border-right: var(--c-primary) dashed 2px;
+}
+
+/* Ensure submenu items text align left */
+.sub-menu li a {
+    text-align: left;
+    padding: 10px 16px; /* Slightly smaller padding for submenu items */
+}
+
+/* HERO IMAGE STYLES */
+
+#page-hero-image {
+    height: 50vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+#page-hero-image img {
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+    top: -50%;
+}
+
+/* CONTENT STYLES */
+
+#page-content-heading {
+    font-size: 4rem;
+    font-family: var(--fHeadingMain);
+    font-weight: normal;
+    text-shadow: 4px 4px 4px rgba(0,0,0,.2);
+    margin: 0;
+    padding: 0;
+    display: block;
+    height: 25vh;
+    text-align: center;
+    line-height: 25vh; /* Center text vertically by matching the element's height */
+    background-color: var(--c-primary);
+    color: var(--c-white);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);
+}
+
+.wp-block-group, #events-page-events {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px 0;        
+}
+
+.wp-block-group h2, #events-page-events h2 {
+    font-family: var(--fHeadingSub);
+    font-size: 36px;
+    color: var(--c-primary);  
+    margin-bottom: 0px;
+}
+
+.wp-block-group h3 {
+    font-family: var(--fHeadingSub);
+    font-size: 24px;
+    color: var(--c-primary);  
+    margin-bottom: 0px;
+}
+
+.wp-block-group p {
+    font-family: var(--fMain);  
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.5em;
+    padding: 18px 0px;      
+}
+
+ul#sweet-packages {
+    list-style-type: none;
+    padding: 18px 0px;
+}
+
+ul#sweet-packages li {
+    font-family: var(--fMain);  
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.5em;
+}
+
+.cta {
+    display: block;
+    width: 100%;
+    height: 20vh;
+    text-align: center;
+    background-color: var(--c-primary-soft);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: cover;
+    padding: 0;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);
+}
+
+.cta-a {
+    background-image: url("https://sallysweets-wp.local/wp-content/uploads/2024/03/sweets-assorted.webp");
+}
+
+.cta-b {
+    background-image: url("https://sallysweets-wp.local/wp-content/uploads/2024/03/sweets-chocs.webp");
+}
+
+.cta-c {
+    background-image: url("https://sallysweets-wp.local/wp-content/uploads/2024/03/sweets-hearts.webp");
+}
+
+.cta-d {
+    background-image: url("https://sallysweets-wp.local/wp-content/uploads/2024/03/sweets-pyb.webp");
+}
+
+.cta h3 {
+    font-family: var(--fHeadingSub);
+    font-size: 36px;
+    line-height: 20vh;
+    background-color: var(--c-primary);
+    color: var(--c-white);
+    display: inline;
+    padding: 8px 20px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);
+}
+
+.post-content {
+    width: 60vw;
+    margin: 0 auto;
+}
+
+.event {
+    display: block;
+    margin: 0;
+    padding: 10px;
+    margin: 24px 0px 0px;
+    box-sizing: border-box;
+    background-color: var(--c-primary-soft);
+    border: var(--c-secondary) dashed 2px;
+    border-radius: 0.25rem;
+}
+
+.event h2 {
+    font-family: var(--fMain);
+    font-size: 24px;
+    color: var(--c-primary);  
+    margin-bottom: 0px;
+}
+
+.event h3 {
+    font-family: var(--fMain);
+    font-size: 18px;
+    color: var(--c-primary);  
+    margin-bottom: 0px;
+}
+
+.event p {
+    font-family: var(--fMain);  
+    font-size: 14px;
+    font-weight: normal;
+    padding: 5px 0px;      
+}
+
+.event ul {
+    list-style-type: none;
+}
+
+.event ul li {
+    font-family: var(--fMain);  
+    font-size: 14px;
+    font-weight: normal;
+    padding: 5px 0px;
+}
+
+.event ul li a {
+    color: var(--c-primary);
+    text-decoration: none;
+}
+
+.event ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Contact page */
+
+.contact-page-main-group .contact-section-left {
+    width: 33%;
+    text-align: center;
+}
+
+.contact-page-main-group .contact-section-right {
+    width: 64%;
+}
+
+.contact-page-main-group .contact-section-right img {
+    display: block;
+    border: var(--c-primary) 5px solid;
+    border-radius: 15px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);
+}
+
+
+/* FOOTER STYLES */
+
+#site-footer {
+    width: 100%;
+    height: 50vh;
+    background-color: var(--c-primary);
+}
+
+#site-footer-main {
+    width: 60vw;
+    margin: 0 auto;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: start;
+}
+
+.site-footer-main-item {
+    width: 33%;
+    flex: 1;
+    text-align: center;
+    font-family: var(--fMain);
+    font-weight: bold;
+    font-size: normal;
+}
+
+#site-footer-main-address p,
+#site-footer-main-address ul li a,
+#site-footer-main-social p,
+#site-footer-main-social ul li a,
+#site-footer-main-navigation p,
+#site-footer-main-navigation ul li a {
+    color: var(--c-white);
+}
+
+#site-footer-main-address ul li a:hover,
+#site-footer-main-social ul li a:hover,
+#site-footer-main-navigation ul li a:hover {
+    color: var(--c-black);
+}
+
+
+.site-footer-main-item hr {
+    width: 50%;
+    border: none;
+    height: 1px;
+    background-color: var(--c-black);
+}
+
+.site-footer-main-item ul {
+    list-style-type: none;
+}
+
+.site-footer-main-item ul li {
+    color: var(--c-white);
+    line-height: 2em;
+}
+
+.site-footer-main-item ul li a {
+    display: block;
+    height: 40px;
+    width: 100%;
+    padding-top: 5px;
+    color: var(--c-white);
+    text-decoration: none;
+}
+
+.site-footer-main-item ul li a:hover {
+    color: var(--c-black);
+}
+
+#site-footer-bottom {
+    display: block;
+    width: 100%;
+    height: 15vh;
+    line-height: 15vh;
+    background-color: var(--c-black);
+    color: var(--c-white);
+    font-family: var(--fMain);
+    text-align: center; 
+    margin-top: 15vh;   
+}

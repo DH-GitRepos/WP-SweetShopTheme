@@ -1,0 +1,336 @@
+/*
+Theme Name:   SallySweetsShop
+Description:  WP Theme for Sally Sweets Shop, created for Developing With Web Frameworks assignment 2 at Staffordshire University 2024.
+Author:       Darren Halpin (Student ID: 20122839)
+Version:      1.0.0
+Tag:          light
+Template:     storefront
+*/
+
+/* MAIN ROOT STYLES */
+/* Colour Pallet */
+:root {
+    --c-white: rgba(255, 255, 255, 1);
+    --c-black: rgba(0, 0, 0, 1);
+    --c-primary: rgba(211, 28, 92, 1);
+    --c-primary-soft: rgba(249, 227, 236, 1);
+    --c-secondary: rgba(155, 191, 229, 1);
+    --c-button-bg: #ddd;
+    --c-button-border: #333;
+}
+
+/* Typography */
+:root {
+    --fMain: 'f_Main', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    --fHeadingMain: 'f_HeadingMain', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    --fHeadingSub: 'f_HeadingSub', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+@font-face {
+    font-family: 'f_Main';
+    font-style: normal;
+    font-weight: 400;
+    src: url('assets/fonts/Montserrat-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'f_HeadingMain';
+    font-style: italic;
+    font-weight: 200;
+    src: url('assets/fonts/Sweet-Chili.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'f_HeadingSub';
+    font-style: normal;
+    font-weight: 400;
+    src: url('assets/fonts/LobsterTwo-BoldItalic.woff') format('woff');
+}
+
+html, body, div, ul, li, main, section, aside, #container {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+p, h1, h2, h3, h4, h5, h6, a {
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER STYLES */
+
+#main-header {
+    position: sticky;
+    z-index: 1000;
+    top: 0px;
+}
+
+#header-address {
+    color: var(--c-white);
+    letter-spacing: 0.1rem;
+    background-color: var(--c-primary);
+    text-align: center;
+    padding: 12px 0px;
+    font-family: var(--fMain);
+    font-size: 12px;  
+    font-weight: bold;  
+}
+
+#header-logo {
+    display: block;
+    width: 100%;
+    background-color: var(--c-white);
+    text-align: center;
+    padding: 15px 0px;
+}
+
+#header-logo img {
+    width: 100px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* NAVIGATION MENU STYLES */
+
+#site-navigation .menu {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);
+}
+
+#site-navigation .menu {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: var(--c-secondary);
+    border-top: var(--c-primary) dashed 2px;
+    border-bottom: var(--c-primary) dashed 2px;
+}
+
+#site-navigation .menu ul {
+    box-sizing: border-box;
+    list-style-type: none;
+    display: flex; /* Use Flexbox for the main menu */
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-around; /* Align items to the start of the container */
+    align-items: start;
+}
+
+#site-navigation .menu li {
+    font-family: var(--fMain);
+    font-size: 0.9em;
+    position: relative;
+    flex: 1; /* Distributes space equally among menu items */
+    text-align: center; /* Centers the text within each menu item */
+}
+
+/* Style links within the menu items */
+#site-navigation .menu li a {
+    display: block;
+    color: var(--c-black);
+    font-weight: bold;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color on hover */
+#site-navigation .menu li a:hover,
+#site-navigation .menu li a:focus { /* Accessibility: focus state */
+    background-color: var(--c-primary);
+    color: var(--c-white);
+    font-weight: bold;
+}
+
+/* Styles for submenu */
+.menu-item-has-children .sub-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0; /* Ensures the submenu is as wide as the parent item */
+    text-align: left; /* Align submenu text to the left */
+    top: 100%; /* Align the submenu right below the menu item */
+    flex-direction: column; /* Stack submenu items vertically */
+    background-color: var(--c-secondary);
+    width: 100%; /* Submenu width matches the parent item */
+    list-style: none; /* Remove list styles */
+    padding: 0; /* Reset padding */
+    margin: 0; /* Reset margin */
+}
+
+/* Display submenu on parent item hover */
+.menu-item-has-children:hover .sub-menu {
+    border-top: var(--c-primary) dashed 2px;
+    display: flex; /* Display submenu */
+    z-index: 999; /* Force the sub-menu to display above the hero image */
+}
+
+/* Style for submenu items to override flex properties */
+.sub-menu li {
+    width: 100%; /* Ensure full width for submenu items */
+    border-bottom: var(--c-primary) dashed 2px;
+    border-left: var(--c-primary) dashed 2px;
+    border-right: var(--c-primary) dashed 2px;
+}
+
+/* Ensure submenu items text align left */
+.sub-menu li a {
+    text-align: left;
+    padding: 10px 16px; /* Slightly smaller padding for submenu items */
+}
+
+/* MISC PAGE STYLES */
+
+#page {
+    font-family: var(--fMain);
+}
+
+#main header h1,
+.product_title,
+#tab-description h2,
+.related h2,
+.up-sells h2,
+.wp-block-woocommerce-cart-cross-sells-block h2 {
+    font-family: var(--fHeadingSub);
+    color: var(--c-primary);
+}
+
+.wc-block-components-order-summary__button-text,
+.wc-block-components-totals-item__label,
+.wc-block-components-totals-item__label,
+.wc-block-components-title,
+.woocommerce-bacs-bank-details h2,
+.woocommerce-order-details h2,
+.woocommerce-customer-details h2 {
+    color: var(--c-primary);
+    font-weight: bold;
+}
+
+.product_title {
+    margin-bottom: 10px;
+}
+
+.woocommerce-message {
+    background-color: var(--c-primary);
+}
+ 
+.product {
+    display: block;
+    margin: 0;
+    padding: 10px;
+    margin: 24px 0px 0px;
+    box-sizing: border-box;
+    background-color: var(--c-primary-soft);
+    border: var(--c-secondary) dashed 2px;
+    border-radius: 0.25rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);
+}
+
+.button {
+    background-color: var(--c-primary);
+    color: var(--c-white);
+    border-radius: 5px;
+    box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.5);
+}
+
+.button:hover {
+    background-color: var(--c-secondary);
+    color: var(--c-white);
+    box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.5);
+}
+
+#discountMessage {
+    text-align: center;
+    color: var(--c-primary);
+    font-size: 1.5em;
+    margin-top: -50px;
+    margin-bottom: 50px;
+}
+
+/* FOOTER STYLES */
+
+#site-footer {
+    width: 100%;
+    height: 50vh;
+    background-color: var(--c-primary);
+}
+
+#site-footer-main {
+    width: 60vw;
+    margin: 0 auto;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: start;
+}
+
+.site-footer-main-item {
+    width: 33%;
+    flex: 1;
+    text-align: center;
+    font-family: var(--fMain);
+    font-weight: bold;
+    font-size: normal;
+}
+
+#site-footer-main-address p,
+#site-footer-main-social p,
+#site-footer-main-navigation p {
+    color: var(--c-white);
+}
+
+.site-footer-main-item li p,
+.site-footer-main-item li a {
+    color: var(--c-white);
+}
+
+.site-footer-main-item li a:hover {
+    color: var(--c-black);
+}
+
+.site-footer-main-item hr {
+    width: 50%;
+    border: none;
+    height: 1px;
+    background-color: var(--c-black);
+    margin: 8px auto;
+}
+
+.site-footer-main-item ul {
+    list-style-type: none;
+}
+
+.site-footer-main-item ul li {
+    color: var(--c-white);
+    line-height: 2em;
+}
+
+.site-footer-main-item ul li a {
+    display: block;
+    height: 40px;
+    width: 100%;
+    padding-top: 5px;
+    color: var(--c-white);
+    text-decoration: none;
+}
+
+.site-footer-main-item ul li a:hover {
+    color: var(--c-black);
+}
+
+#site-footer-bottom {
+    display: block;
+    width: 100%;
+    height: 15vh;
+    line-height: 15vh;
+    background-color: var(--c-black);
+    color: var(--c-white);
+    font-family: var(--fMain);
+    text-align: center; 
+    margin-top: 6vh;   
+}
